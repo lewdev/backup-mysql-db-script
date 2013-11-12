@@ -1,12 +1,37 @@
 backup-mysql-db-script
 ======================
 
-I got worried about having a corrupt database with no back up, so I created a BASH script.
+This script is designed to be easy to configure and back up your MySQL databases on a daily, weekly, and monthly with the combination of bash and cron. I have seen solutions online where the back up is only once, but this will keep a current and save the previous back up.
 
-It's a really static version with no variables, but it works if you need it.
+Configurations
+==============
+    DB_USER=""
+    DB_PASS=""
+    DB_HOST=""
+    BASE_DIR="/path/to/backup/dir"
+    DB_NAMES=('database-a' 'database-b' 'database-c' )
 
-The word "month" is implying that you have this script run on a monthly basis using cron jobs.
+BASE_DIR is where you will store your back up data.
 
-If I have time, I'll make it more dynamic.
+If you use different users for each database, create a "backup" user with "LOCK TABLES" and "SELECT" privileges only so that the script is a bit safer to use.
 
-You can use this script however you want, I just hope it would help others write their backup scripts.
+USAGE
+=====
+./mysql-backup.sh daily
+
+You may use 'daily', 'weekly', or 'monthly' as the first argument to have the following result:
+
+    # "daily"
+    /path/to/backup/dir/database-a.sql.today.zip
+    /path/to/backup/dir/database-a.sql.yesterday.zip
+
+    # "weekly"
+    /path/to/backup/dir/database-a.sql.lastweek.zip
+    /path/to/backup/dir/database-a.sql.thisweek.zip
+
+    # "monthly"
+    /path/to/backup/dir/database-a.sql.lastmonth.zip
+    /path/to/backup/dir/database-a.sql.thismonth.zip
+
+
+Set up cron to run the command on a daily, weekly, and monthly basis and you are set!
