@@ -1,7 +1,5 @@
 #!/bin/bash
 
-NOW=$(date +"%Y-%m-%d-%H%M")
-
 #database configurations
 # This user should only have "LOCK TABLES" and "SELECT" privileges for security purposes
 DB_USER=""
@@ -27,6 +25,9 @@ case "$1" in
         BEFORENAME="lastmonth"
     ;;
 esac
+
+#current date/time YYY-MM-DD-hhmm
+NOW=$(date +"%Y-%m-%d-%H%M")
 
 for DB_NAME in "${DB_NAMES[@]}"; do
     #output directory
