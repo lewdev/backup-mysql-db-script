@@ -23,15 +23,21 @@ You may use 'daily', 'weekly', or 'monthly' as the first argument to have the fo
 
     # "daily"
     /path/to/backup/dir/database-a.sql.today.zip
+    (database-a.2014-07-08-2047.sql)
     /path/to/backup/dir/database-a.sql.yesterday.zip
+    (database-a.2014-07-07-2047.sql)
 
     # "weekly"
     /path/to/backup/dir/database-a.sql.lastweek.zip
+    (database-a.2014-07-01-2047.sql)
     /path/to/backup/dir/database-a.sql.thisweek.zip
+    (database-a.2014-07-08-2047.sql)
 
     # "monthly"
     /path/to/backup/dir/database-a.sql.lastmonth.zip
+    (database-a.2014-06-08-2047.sql)
     /path/to/backup/dir/database-a.sql.thismonth.zip
+    (database-a.2014-07-08-2047.sql)
 
 
 Set up cron to run the command on a daily, weekly, and monthly basis and you are set!
