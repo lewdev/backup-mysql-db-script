@@ -5,6 +5,8 @@ This script is designed to be easy to configure and back up your MySQL databases
 
 Configurations
 ==============
+Apply appropriate configurations at the top of the script:
+
     DB_USER=""
     DB_PASS=""
     DB_HOST=""
@@ -17,9 +19,13 @@ If you use different users for each database, create a "backup" user with "LOCK 
 
 USAGE
 =====
-./mysql-backup.sh daily
+You may use 'daily', 'weekly', or 'monthly' as the first argument to use the appropriate naming convention for the zip file.
 
-You may use 'daily', 'weekly', or 'monthly' as the first argument to have the following result:
+    ./mysql-backup.sh daily
+
+    ./mysql-backup.sh weekly
+
+    ./mysql-backup.sh monthly
 
     # "daily"
     /path/to/backup/dir/database-a.sql.today.zip
@@ -38,6 +44,5 @@ You may use 'daily', 'weekly', or 'monthly' as the first argument to have the fo
     (database-a.2014-06-08-2047.sql)
     /path/to/backup/dir/database-a.sql.thismonth.zip
     (database-a.2014-07-08-2047.sql)
-
 
 Set up cron to run the command on a daily, weekly, and monthly basis and you are set!
