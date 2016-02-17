@@ -1,7 +1,18 @@
 #!/bin/bash
 
-#database configurations
-# This user should only have "LOCK TABLES" and "SELECT" privileges for security purposes
+# Example Usage:
+#  > chmod u+x backup-mysql-db-script.sh
+#  > ./backup-mysql-db-script.sh daily
+
+# 0. Install zip.
+#  > sudo apt-get install zip
+
+# 1. Create a MySQL backup user with limited access to each database you want to back up.
+#  > mysql -u root -p
+#  > CREATE USER 'backup_user'@'localhost' IDENTIFIED BY 'STRONGPASSWORD';
+#  > GRANT SELECT,LOCK TABLES ON databse-a.* TO 'backup_user'@'localhost';
+
+# 2. Set database configurations below:
 DB_USER=""
 DB_PASS=""
 DB_HOST="" #usually just 'localhost'
