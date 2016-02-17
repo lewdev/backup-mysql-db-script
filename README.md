@@ -3,6 +3,10 @@ backup-mysql-db-script
 
 This script is designed to be easy to configure and back up your MySQL databases on a daily, weekly, and monthly with the combination of bash and cron. I have seen solutions online where the back up is only once, but this will keep a current and save the previous back up.
 
+The "zip" command is required, so instal it using:
+
+    > sudo apt-get install zip
+
 Configurations
 ==============
 Apply appropriate configurations at the top of the script:
@@ -45,4 +49,17 @@ You may use 'daily', 'weekly', or 'monthly' as the first argument to use the app
     /path/to/backup/dir/database-a.sql.thismonth.zip
     (database-a.2014-07-08-2047.sql)
 
-Set up cron to run the command on a daily, weekly, and monthly basis and you are set!
+
+Setup cron jobs
+===============
+
+    > crontab -e
+
+    # Daily 1:30 AM
+    30 1 * * * /var/www/scripts/backup-mysql-database.sh daily
+
+    # Weekly 1:40 AM
+    40 1 * * 0 /var/www/scripts/backup-mysql-database.sh weekly
+
+    # Monthly 1:50 AM
+    50 1 3 * * /var/www/scripts/backup-mysql-database.sh monthly
