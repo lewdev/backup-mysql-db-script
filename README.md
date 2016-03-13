@@ -52,14 +52,17 @@ You may use 'daily', 'weekly', or 'monthly' as the first argument to use the app
 
 Setup cron jobs
 ===============
+Type the following command in your Ubuntu installation prompt:
 
     > crontab -e
 
+In the cron config file, put in scheduled the following commands:
+
     # Daily 1:30 AM
-    30 1 * * * /var/www/scripts/backup-mysql-database.sh daily
+    30 1 * * * /path-to-scripts/backup-mysql-database.sh daily
 
     # Weekly 1:40 AM
-    40 1 * * 0 /var/www/scripts/backup-mysql-database.sh weekly
+    40 1 * * 0 /path-to-scripts/backup-mysql-database.sh weekly
 
     # Monthly 1:50 AM
-    50 1 3 * * /var/www/scripts/backup-mysql-database.sh monthly
+    50 1 3 * * /path-to-scripts/backup-mysql-database.sh monthly
